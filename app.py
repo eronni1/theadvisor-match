@@ -8,7 +8,7 @@ app = Flask(__name__)
 # MongoDB connection setup
 client = MongoClient('mongodb://localhost:27017/')
 db = client['mag_dblp']
-collection = db['papers']
+collection = db['match']
 
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -18,7 +18,7 @@ class CustomJSONEncoder(json.JSONEncoder):
 
 app.json_encoder = CustomJSONEncoder
 
-@app.route('/papers', methods=['GET'])
+@app.route('/match', methods=['GET'])
 def get_papers():
     papers_list = list(collection.aggregate([{"$sample": {"size": 50}}]))
     # Manually ensure that ObjectId is converted to string for each document
