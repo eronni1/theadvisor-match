@@ -20,7 +20,7 @@ app.json_encoder = CustomJSONEncoder
 
 @app.route('/match', methods=['GET'])
 def get_papers():
-    papers_list = list(collection.aggregate([{"$sample": {"size": 50}}]))
+    papers_list = list(collection.aggregate([{"$sample": {"size": 50000}}]))
     # Manually ensure that ObjectId is converted to string for each document
     for paper in papers_list:
         paper['_id'] = str(paper['_id'])
