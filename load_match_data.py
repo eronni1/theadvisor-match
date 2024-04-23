@@ -3,8 +3,8 @@ import os
 from pymongo import MongoClient
 
 # MongoDB connection setup
-client = MongoClient('mongodb://localhost:27017/')
-db = client['mag_dblp']
+client = MongoClient('localhost', 11111)
+db = client['theadvisor']
 collection = db['match']
 
 def insert_papers_batch(papers_batch):
