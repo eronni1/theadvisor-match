@@ -6,8 +6,8 @@ import json
 app = Flask(__name__)
 
 # MongoDB connection setup
-client = MongoClient('mongodb://localhost:27017/')
-db = client['mag_dblp']
+client = MongoClient('localhost', 11111)
+db = client['theadvisor']
 collection = db['match']
 
 class CustomJSONEncoder(json.JSONEncoder):
